@@ -8,7 +8,7 @@ public class MoodAnalyzerTest
 	@Test
 	public void Welcome()
 	{
-		System.out.println(" Welcome to mood analyzer ");
+		System.out.println("  Welcome to mood analyzer ");
 	}
 	@Test
 	public void givenHappyMessgae_WhenAnalyse_ShouldReturnHappyMood()
@@ -24,4 +24,5 @@ public class MoodAnalyzerTest
 		String mood = moodAnalyser.analyseMethod(" i am in sad mood ");
 		Assert.assertEquals("sad", mood);
 	}
+	
 }
