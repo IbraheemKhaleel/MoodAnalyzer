@@ -7,7 +7,7 @@ public class MoodAnalyzer
 {
 	public String analyseMethod(String mood)
 	{
-		if(mood.contains("sad"))
+		if(mood.contains("sad "))
 			return "sad";
 		return "happy" ;
 	}
