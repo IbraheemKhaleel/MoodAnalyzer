@@ -13,28 +13,40 @@ public class MoodAnalyzerTest
 	@Test
 	public void givenHappyMessgae_WhenAnalyse_ShouldReturnHappyMood() throws Exception
 	{
-		MoodAnalyzer moodAnalyser =  new MoodAnalyzer();
-		String mood = moodAnalyser.analyseMethod(" i am in any mood ");
+		MoodAnalyzer moodAnalyser =  new MoodAnalyzer(" i am in any mood ");
+		String mood = moodAnalyser.analyseMethod();
 		Assert.assertEquals("happy", mood);
 	}
 	@Test
-	public void givenSadMessgae_WhenAnalyse_ShouldReturnSadMood() throws Exception
+	public void givenSadMessage_WhenAnalyse_ShouldReturnSadMood() throws Exception
 	{
-		MoodAnalyzer moodAnalyser =  new MoodAnalyzer();
-		String mood = moodAnalyser.analyseMethod(" i am in sad mood ");
+		MoodAnalyzer moodAnalyser =  new MoodAnalyzer(" i am in sad mood ");
+		String mood = moodAnalyser.analyseMethod();
 		Assert.assertEquals("sad", mood);
 	}
 	@Test
-	public void givenNullMood_WhenAnalyse_ShouldThrowAnalyzeMoodException()  throws Exception
+	public void givenNullMood_WhenAnalyse_ShouldThrowAnalyzeMoodException()
 	{
 		try 
 		{
-			MoodAnalyzer moodAnalyser =  new MoodAnalyzer();
-			moodAnalyser.analyseMethod(null);
+			MoodAnalyzer moodAnalyser =  new MoodAnalyzer(null);
+			moodAnalyser.analyseMethod();
 		}  
 		catch (MoodAnalyzerException e ) 
 		{
-			Assert.assertEquals("Please provide proper message ", e.getMessage());
+			Assert.assertEquals(MoodAnalyzerException.EnumType.NULL_STRING, e.enumType);
+		}
+	}
+	@Test
+	public void givenEmptyMessage_WhenAnalyse_ShouldThrowAnalyzeMoodException()
+	{
+		try
+		{
+			MoodAnalyzer moodAnalyzer = new MoodAnalyzer(" ");
+			moodAnalyzer.analyseMethod();
+		}
+		catch (MoodAnalyzerException e) {
+			Assert.assertEquals(MoodAnalyzerException.EnumType.EMPTY_STRING , e.enumType);
 		}
 	}
 
